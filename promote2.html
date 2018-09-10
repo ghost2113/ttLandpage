@@ -1,0 +1,99 @@
+
+
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>看新闻赚红包</title>
+		<meta charset="utf-8" />
+		<link rel="dns-prefetch" href="//yun.tuisnake.com">
+		<script type="text/javascript">
+			! function(e, i) {
+				var t = e.documentElement,
+					n = navigator.userAgent.match(/iphone|ipod|ipad/gi),
+					a = n ? Math.min(i.devicePixelRatio, 3) : 1,
+					m = "orientationchange" in window ? "orientationchange" : "resize";
+				t.dataset.dpr = a;
+				for(var d, l, c = !1, o = e.getElementsByTagName("meta"), r = 0; r < o.length; r++) l = o[r], "viewport" == l.name && (c = !0, d = l);
+				if(c) d.content = "width=device-width,initial-scale=1.0,maximum-scale=1.0, minimum-scale=1.0,user-scalable=no";
+				else {
+					var o = e.createElement("meta");
+					o.name = "viewport", o.content = "width=device-width,initial-scale=1.0,maximum-scale=1.0, minimum-scale=1.0,user-scalable=no", t.firstElementChild.appendChild(o)
+				}
+				var s = function() {
+					var e = t.clientWidth;
+					e / a > 640 && (e = 640 * a), window.remScale = e / 640, t.style.fontSize = 200 * (e / 640) + "px"
+				};
+				s(), e.addEventListener && i.addEventListener(m, s, !1)
+			}(document, window);
+		</script>
+		<link rel="stylesheet" href="./css/promote.css">
+	</head>	
+	<body>		
+		<div class="btn clickArea" id="download" data-href="https://zhishun520.com/huashu.apk"></div>
+		<div class="packContainer"></div>
+		<div class="light"></div>
+		<div class="lunbo">
+			<div class="info1"></div>
+			<div class="info2"></div>
+			<div class="info3"></div>
+			<div class="info4"></div>
+		</div>
+		<div class="float">
+			<div class="btn3 clickArea"  id="download" ></div>
+		</div>
+		<div class="mask">
+			<img src="./img/weixinOpen.png" alt="" onClick="return false"/>
+		</div>
+		<iframe name="iframe"  src="" frameborder="0"></iframe>
+		<script src="https://s19.cnzz.com/z_stat.php?id=1274058609&web_id=1274058609" language="JavaScript"></script>
+		<script type="text/javascript" src="./js/jquery-3.3.1.min.js"></script>
+		<script src="./js/linkedME/log.js"></script>	
+		<script type="text/javascript" src="./js/downApp.js"></script>		
+		<script>
+			/**
+			 * 隐藏站长统计
+			 */
+			$("a[title='站长统计']").hide();
+            var _czc = _czc || [];
+            _czc.push(["_setAccount", "1274058609"]);
+			var weixin = is_weixn();
+			var u = navigator.userAgent;
+		    var isAndroid = u.indexOf('Android') > -1 || u.indexOf('Adr') > -1; //android终端
+		    var isiOS = !!u.match(/\(i[^;]+;( U;)? CPU.+Mac OS X/); //ios终端
+		    $(".clickArea").on("click",download);
+            if(isAndroid){
+            	$(".btn").attr("data-href","https://zhishun520.com/huashu.apk");
+            	if(weixin){
+            		//安卓微信打开，提示用浏览器打开
+            		$(".mask").show(); 
+            	}else{
+            		//安卓不是微信打开，自动下载
+            		$(".clickArea").trigger("click")
+            	}
+	        }else if(isiOS){
+	        	//ios打开直接跳转appstore
+        	    $(".btn").attr("data-href","https://itunes.apple.com/app/apple-store/id1374434584?pt=119039171&ct=linkedMe&mt=8");
+	        }	
+            function download(){
+        		_czc.push(["_trackPageview", "/huashu.apk","https://zhishun520.com/"]);
+                //下载事件
+                _czc.push(["_trackEvent", "安装包", "下载点击", "头条TV", 1, "download"]);
+                //window.location.href = $(".btn").attr("data-href");
+                //解决ios 跳转appstore去除中间页
+				if(isiOS&&weixin){
+					window.location.href = "https://itunes.apple.com/app/apple-store/id1374434584?pt=119039171&ct=linkedMe&mt=8";
+				}else{
+					window.location.href = $(".btn").attr("data-href");
+				}
+			}		             	   
+            function is_weixn(){  
+			    var ua = navigator.userAgent.toLowerCase();  
+			    if(ua.match(/MicroMessenger/i)=="micromessenger") {  
+			        return true;  
+			    } else {  
+			        return false;  
+			    }  
+			};
+		</script>
+	</body>
+</html>

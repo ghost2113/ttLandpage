@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html>
+	<head>
+	<title>看新闻赚红包</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <link rel="stylesheet" href="./css/reset.css" />
+    <link rel="stylesheet" href="./css/huashuo.css">
+	<script src="https://cdn.bootcss.com/Swiper/4.3.0/js/swiper.min.js"></script>
+	</head>	
+	<body>			
+		<section id="main">
+			<div class="btn" data-href=""></div>
+			<div style="height:1.95rem;"></div>
+			<div class="container">
+				<div style="height:1.5rem;"></div>
+				<div class="dlApp"></div>				
+				<div class="lunbo">
+					<div class="swiper-container">
+					    <div class="swiper-wrapper">
+					        <div class="swiper-slide"><img src="./img/huashuo/p1.png" alt="" /></div>  
+					        <div class="swiper-slide"><img src="./img/huashuo/p2.png" alt="" /></div>
+					        <div class="swiper-slide"><img src="./img/huashuo/p3.png" alt="" /></div>
+					        <div class="swiper-slide"><img src="./img/huashuo/p4.png" alt="" /></div>
+					        <div class="swiper-slide"><img src="./img/huashuo/p5.png" alt="" /></div>  
+					        <div class="swiper-slide"><img src="./img/huashuo/p6.png" alt="" /></div>
+					        <div class="swiper-slide"><img src="./img/huashuo/p7.png" alt="" /></div>
+					        <div class="swiper-slide"><img src="./img/huashuo/p8.png" alt="" /></div>
+					    </div>
+					</div>
+				</div>
+			</div>
+		</section>
+		<div class="mask" onclick="hideMask()">
+			<img src="./img/weixinOpen.png" alt="" onClick="return false"/>
+		</div>
+		<iframe name="iframe"  src="" frameborder="0"></iframe>
+<script src="https://s22.cnzz.com/z_stat.php?id=1274387863&web_id=1274387863" language="JavaScript"></script>
+		<script type="text/javascript" src="./js/rem.js"></script>
+		<script type="text/javascript" src="./js/loading.js"></script>
+		<script type="text/javascript" src="./js/zepto.js"></script>
+		<script type="text/javascript" src="./js/fastclick.js"></script>
+		<script>
+			$(document).ready(function () {
+				/**
+				 * 轮播
+				 */
+				var mySwiper = new Swiper ('.swiper-container', {
+				    direction: 'vertical',//
+				    loop: true,	
+				    autoplay:true,
+				    slidesPerView: 4,
+				    speed:1000
+				  })        
+			})			
+			/**
+			 * 隐藏站长统计
+			 */
+			$("a[title='站长统计']").hide();
+            var _czc = _czc || [];
+            _czc.push(["_setAccount", "1274387863"]);
+			var weixin = is_weixn();
+			var u = navigator.userAgent;
+		    var isAndroid = u.indexOf('Android') > -1 || u.indexOf('Adr') > -1; //android终端
+		    var isiOS = !!u.match(/\(i[^;]+;( U;)? CPU.+Mac OS X/); //ios终端
+		    /**
+		     * 链接地址
+		     */
+		    //https://lkme.cc/kMD/Mo4VKNzqK   huashuo包  深度链接
+		    if(isAndroid){
+            	$(".btn").attr("data-href","https://lkme.cc/kMD/Mo4VKNzqK");
+            	if(weixin){
+            		//安卓微信打开，提示用浏览器打开
+            		$(".mask").show(); 
+            	}else{
+            		//安卓不是微信打开，自动下载
+            		$(".dlApp").trigger("click")
+            	}
+	        }else if(isiOS){
+	        	//ios打开直接跳转appstore
+        	    $(".btn").attr("data-href","https://itunes.apple.com/app/apple-store/id1374434584?pt=119039171&ct=linkedMe&mt=8");
+	        }	
+	        //按钮绑定立即领取事件
+		    $(".dlApp").on("click",download);
+			/*
+			 * 立即领取
+			 */
+            function download(){
+            	if(weixin&&isAndroid){
+            		//安卓微信打开，提示用浏览器打开
+            		$(".mask").show(); 
+            		return;
+            	}
+        		_czc.push(["_trackPageview", "/huashu.apk","https://zhishun520.com/"]);
+                //下载事件
+                _czc.push(["_trackEvent", "安装包", "下载", "头条TV", 1, "download"]);
+				if(isiOS&&weixin){
+					window.iframe.location.href = "https://itunes.apple.com/app/apple-store/id1374434584?pt=119039171&ct=linkedMe&mt=8";
+				}else{
+					window.location.href = $(".btn").attr("data-href");
+				}
+			}		   
+			/*
+			 * 是否微信打开
+			 */
+            function is_weixn(){  
+			    var ua = navigator.userAgent.toLowerCase();  
+			    if(ua.match(/MicroMessenger/i)=="micromessenger") {  
+			        return true;  
+			    } else {  
+			        return false;  
+			    }  
+			};
+			//关闭遮罩
+			function hideMask(){
+				$(".mask").hide();
+			}
+		</script>
+	</body>
+</html>
