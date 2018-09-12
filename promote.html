@@ -1,53 +1,61 @@
 <!DOCTYPE html>
 <html>
 	<head>
-		<title>看新闻赚红包</title>
-		<meta charset="utf-8" />
-		<link rel="dns-prefetch" href="//yun.tuisnake.com">
-		<script type="text/javascript">
-			! function(e, i) {
-				var t = e.documentElement,
-					n = navigator.userAgent.match(/iphone|ipod|ipad/gi),
-					a = n ? Math.min(i.devicePixelRatio, 3) : 1,
-					m = "orientationchange" in window ? "orientationchange" : "resize";
-				t.dataset.dpr = a;
-				for(var d, l, c = !1, o = e.getElementsByTagName("meta"), r = 0; r < o.length; r++) l = o[r], "viewport" == l.name && (c = !0, d = l);
-				if(c) d.content = "width=device-width,initial-scale=1.0,maximum-scale=1.0, minimum-scale=1.0,user-scalable=no";
-				else {
-					var o = e.createElement("meta");
-					o.name = "viewport", o.content = "width=device-width,initial-scale=1.0,maximum-scale=1.0, minimum-scale=1.0,user-scalable=no", t.firstElementChild.appendChild(o)
-				}
-				var s = function() {
-					var e = t.clientWidth;
-					e / a > 640 && (e = 640 * a), window.remScale = e / 640, t.style.fontSize = 200 * (e / 640) + "px"
-				};
-				s(), e.addEventListener && i.addEventListener(m, s, !1)
-			}(document, window);
-		</script>
-		<link rel="stylesheet" href="./css/promote.css">
+	<title>看新闻赚红包</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <link rel="stylesheet" href="./css/reset.css" />
+    <link rel="stylesheet" href="./css/huashuo.css">
+    <script type="text/javascript" src="./js/loading.js"></script>
+	<script src="https://cdn.bootcss.com/Swiper/4.3.0/js/swiper.min.js"></script>
 	</head>	
 	<body>		
-		<div class="btn clickArea" id="download" data-href="http://hzmiaokun.com/huashu.apk"></div>
-		<div class="packContainer"></div>
-		<div class="light"></div>
-		<div class="lunbo">
-			<div class="info1"></div>
-			<div class="info2"></div>
-			<div class="info3"></div>
-			<div class="info4"></div>
-		</div>
-		<div class="float">
-			<div class="btn3 clickArea"  id="download" ></div>
-		</div>
-		<div class="mask">
+		<section id="main" style="background-image:url(img/huashuo/OTT.jpg);">
+			<div class="btn" data-href="https://zhishun520.com/hsOTT/app-toutiaotv.apk"></div>
+			<div style="height:1.7rem;"></div>
+			<div class="container" style="background-image:url(img/huashuo/redOTT.png);">
+				<div style="height:1.5rem;"></div>
+				<div class="dlApp"></div>				
+				<div class="lunbo">
+					<div class="swiper-container">
+					    <div class="swiper-wrapper">
+					        <div class="swiper-slide"><img src="./img/huashuo/p1.png" alt="" /></div>  
+					        <div class="swiper-slide"><img src="./img/huashuo/p2.png" alt="" /></div>
+					        <div class="swiper-slide"><img src="./img/huashuo/p3.png" alt="" /></div>
+					        <div class="swiper-slide"><img src="./img/huashuo/p4.png" alt="" /></div>
+					        <div class="swiper-slide"><img src="./img/huashuo/p5.png" alt="" /></div>  
+					        <div class="swiper-slide"><img src="./img/huashuo/p6.png" alt="" /></div>
+					        <div class="swiper-slide"><img src="./img/huashuo/p7.png" alt="" /></div>
+					        <div class="swiper-slide"><img src="./img/huashuo/p8.png" alt="" /></div>
+					    </div>
+					</div>
+				</div>
+			</div>
+			<p style="color:#fff;font-size:0.12rem;padding:0 0.25rem;box-sizing: border-box;margin-top:-0.1rem;text-align:center;">该活动最终解释权归头条TV</p>
+		</section>
+		<div class="mask" onclick="hideMask()">
 			<img src="./img/weixinOpen.png" alt="" onClick="return false"/>
 		</div>
-		<iframe name="iframe"  src="" frameborder="0"></iframe>
+		<iframe name="iframe"  src="" frameborder="0" style="display:none;"></iframe>
 		<script src="https://s13.cnzz.com/z_stat.php?id=1273647821&web_id=1273647821" language="JavaScript"></script>
-		<script type="text/javascript" src="./js/jquery-3.3.1.min.js"></script>
-		<script src="./js/linkedME/log.js"></script>	
-		<script type="text/javascript" src="./js/downApp.js"></script>		
+		<script type="text/javascript" src="./js/rem.js"></script>
+		<script type="text/javascript" src="./js/zepto.js"></script>
+		<script type="text/javascript" src="./js/fastclick.js"></script>
 		<script>
+						$(document).ready(function () {
+				/**
+				 * 轮播
+				 */
+				var mySwiper = new Swiper ('.swiper-container', {
+					autoplay: {
+						delay: 500
+					},
+					direction: 'vertical', //
+					loop: true,
+					slidesPerView: 4,
+					speed: 1000
+				  })        
+			})		
 			/**
 			 * 隐藏站长统计
 			 */
@@ -58,7 +66,8 @@
 			var u = navigator.userAgent;
 		    var isAndroid = u.indexOf('Android') > -1 || u.indexOf('Adr') > -1; //android终端
 		    var isiOS = !!u.match(/\(i[^;]+;( U;)? CPU.+Mac OS X/); //ios终端
-		    $(".clickArea").on("click",download);
+		    weixin = true;
+		    $(".dlApp").on("click",download);
             if(isAndroid){
             	$(".btn").attr("data-href","http://hzmiaokun.com/huashu.apk");
             	if(weixin){
@@ -66,7 +75,7 @@
             		$(".mask").show(); 
             	}else{
             		//安卓不是微信打开，自动下载
-            		$(".clickArea").trigger("click")
+            		$(".dlApp").trigger("click")
             	}
 	        }else if(isiOS){
 	        	//ios打开直接跳转appstore
@@ -75,8 +84,13 @@
             function download(){
         		_czc.push(["_trackPageview", "/huashu.apk","http://hzmiaokun.com/"]);
                 //下载事件
-                _czc.push(["_trackEvent", "安装包", "下载", "头条TV", 1, "download"]);
+                _czc.push(["_trackEvent", "华数传媒", "立即领取点击", "头条TV", 1, "download"]);
                 //window.location.href = $(".btn").attr("data-href");
+                if(weixin && isAndroid) {
+					//安卓微信打开，提示用浏览器打开
+					$(".mask").show();
+					return;
+				}
                 //解决ios 跳转appstore去除中间页
 				if(isiOS&&weixin){
 					window.location.href = "https://itunes.apple.com/app/apple-store/id1374434584?pt=119039171&ct=linkedMe&mt=8";
@@ -92,6 +106,10 @@
 			        return false;  
 			    }  
 			};
+			//关闭遮罩
+			function hideMask(){
+				$(".mask").hide();
+			}
 		</script>
 	</body>
 </html>
